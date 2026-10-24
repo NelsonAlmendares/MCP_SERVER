@@ -1,0 +1,20 @@
+[Unit]
+Description=Oracle Development MCP (Phase 1)
+After=network.target
+
+[Service]
+Type=simple
+User=oracle-mcp
+Group=oracle-mcp
+WorkingDirectory=/opt/oracle-development-mcp
+EnvironmentFile=/etc/oracle-development-mcp/environment
+ExecStart=/opt/oracle-development-mcp/.venv/bin/python -m oracle_development_mcp.server
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
